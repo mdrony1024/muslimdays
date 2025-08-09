@@ -8,8 +8,125 @@
     <!-- টেলিগ্রাম ওয়েব অ্যাপের জন্য SDK -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     
-    <!-- আমাদের ডিজাইন ফাইল (CSS) -->
-    <link rel="stylesheet" href="style.css">
+    <!-- প্রয়োজনীয় ফন্ট লোড করা হচ্ছে -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&display=swap" rel="stylesheet">
+
+    <!-- সমস্ত ডিজাইন (CSS) সরাসরি এখানেই লেখা হলো -->
+    <style>
+        :root {
+            --bg-color: #F4F6F8;
+            --card-color: #FFFFFF;
+            --text-color: #2E3A59;
+            --text-secondary-color: #8F9BB3;
+            --primary-color: #007BFF;
+            --border-color: #EDF1F7;
+            --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ডার্ক মোডের জন্য রঙ */
+        body.dark-mode {
+            --bg-color: #1A1A1A;
+            --card-color: #252526;
+            --text-color: #FFFFFF;
+            --text-secondary-color: #A0A0A0;
+            --border-color: #333333;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Public Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .app-container {
+            padding: 15px;
+            padding-bottom: 80px; /* নিচের ন্যাভিগেশন বারের জন্য জায়গা */
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .header .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .header .greeting h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .header .greeting p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--text-secondary-color);
+        }
+
+        .card {
+            background-color: var(--card-color);
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow);
+            transition: background-color 0.3s;
+        }
+
+        .card-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .prayer-times ul { list-style: none; padding: 0; margin: 0; }
+        .prayer-times li { display: flex; justify-content: space-between; align-items: center; padding: 13px 0; border-bottom: 1px solid var(--border-color); transition: border-color 0.3s; }
+        .prayer-times li:last-child { border-bottom: none; }
+        .prayer-times .prayer-name { font-weight: 500; }
+        .prayer-times .prayer-time { font-weight: 600; color: var(--primary-color); }
+
+        .daily-verse-card .verse-arabic { font-family: 'Amiri', serif; font-size: 24px; text-align: right; margin-bottom: 10px; }
+        .daily-verse-card .verse-translation { font-size: 15px; font-style: italic; color: var(--text-secondary-color); }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            background-color: var(--card-color);
+            padding: 10px 0;
+            box-shadow: 0 -5px 20px -10px rgba(0,0,0,0.1);
+            border-top: 1px solid var(--border-color);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-secondary-color);
+            font-size: 12px;
+            text-decoration: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-item.active { color: var(--primary-color); }
+        .nav-item svg { width: 24px; height: 24px; margin-bottom: 4px; }
+    </style>
 </head>
 <body>
 
@@ -53,17 +170,74 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             <span>হোম</span>
         </a>
-        <a href="#" class="nav-item">
+        <button class="nav-item" onclick="alert('সালাত ফিচারটি শীঘ্রই আসছে।')">
              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
             <span>সালাত</span>
-        </a>
-        <a href="settings.html" class="nav-item">
+        </button>
+        <button class="nav-item" onclick="alert('সেটিংস ফিচারটি শীঘ্রই আসছে।')">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
             <span>সেটিংস</span>
-        </a>
+        </button>
     </nav>
 
-    <!-- আমাদের কার্যকারিতার ফাইল (JavaScript) -->
-    <script src="app.js"></script>
+    <!-- সমস্ত কার্যকারিতা (JavaScript) সরাসরি এখানেই লেখা হলো -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tg = window.Telegram.WebApp;
+            tg.expand();
+
+            const user = tg.initDataUnsafe?.user;
+            const greetingNameElement = document.getElementById('greeting-name');
+            if (user && user.first_name) {
+                greetingNameElement.textContent = user.first_name;
+            } else {
+                greetingNameElement.textContent = 'ব্যবহারকারী';
+            }
+
+            const today = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('date-today').textContent = today.toLocaleDateString('bn-BD', options);
+
+            if (tg.colorScheme === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+
+            async function fetchPrayerTimes(city = 'Dhaka') {
+                const prayerList = document.getElementById('prayer-list');
+                try {
+                    const response = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=Bangladesh&method=1`);
+                    const data = await response.json();
+                    const timings = data.data.timings;
+                    
+                    const prayerOrder = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+                    const prayerMapping = { 'Fajr': 'ফজর', 'Dhuhr': 'যোহর', 'Asr': 'আসর', 'Maghrib': 'মাগরিব', 'Isha': 'ইশা' };
+
+                    prayerList.innerHTML = ''; 
+
+                    prayerOrder.forEach(prayerKey => {
+                        const prayerNameBn = prayerMapping[prayerKey];
+                        const prayerTime = timings[prayerKey];
+
+                        const li = document.createElement('li');
+                        li.innerHTML = `<span class="prayer-name">${prayerNameBn}</span> <span class="prayer-time">${prayerTime}</span>`;
+                        prayerList.appendChild(li);
+                    });
+                } catch (error) {
+                    console.error('Error fetching prayer times:', error);
+                    prayerList.innerHTML = '<li>নামাজের সময় লোড করা যায়নি।</li>';
+                }
+            }
+
+            function fetchDailyVerse() {
+                const verseArabic = document.getElementById('verse-arabic');
+                const verseTranslation = document.getElementById('verse-translation');
+                verseArabic.textContent = "فَإِنَّ مَعَ الْعُسْرِ يُسْرًا";
+                verseTranslation.textContent = "\"নিশ্চয়ই কষ্টের সাথে স্বস্তি রয়েছে।\" (সূরা আল-ইনশিরাহ, আয়াত ৫)";
+            }
+
+            fetchPrayerTimes('Dhaka');
+            fetchDailyVerse();
+        });
+    </script>
 </body>
 </html>
