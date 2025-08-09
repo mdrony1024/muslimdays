@@ -1,25 +1,69 @@
-<!-- index.html -->
-<!-- ... (ফাইলের উপরের সব অংশ একই থাকবে) ... -->
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>দিন মুসলিম</title>
+    
+    <!-- টেলিগ্রাম ওয়েব অ্যাপের জন্য SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
+    <!-- আমাদের ডিজাইন ফাইল (CSS) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <!-- Bottom Navigation Bar (আপডেটেড) -->
+    <div class="app-container">
+        <!-- উপরের অংশ: ব্যবহারকারীর তথ্য -->
+        <header class="header">
+            <img src="https://t.me/i/userpic/320/2.jpg" alt="Profile" class="profile-pic">
+            <div class="greeting">
+                <h2>আসসালামু আলাইকুম, <span id="greeting-name">ব্যবহারকারী</span>!</h2>
+                <p id="date-today">লোড হচ্ছে...</p>
+            </div>
+        </header>
+
+        <main>
+            <!-- নামাজের সময় দেখানোর কার্ড -->
+            <section class="card prayer-times">
+                <h3 class="card-title">আজকের নামাজের সময়সূচী (ঢাকা)</h3>
+                <ul id="prayer-list">
+                    <li>লোড হচ্ছে...</li>
+                </ul>
+            </section>
+
+            <!-- আজকের আয়াত দেখানোর কার্ড -->
+            <section class="card daily-verse-card">
+                <h3 class="card-title">📖 আজকের আয়াত</h3>
+                <p id="verse-arabic" class="verse-arabic">...</p>
+                <p id="verse-translation" class="verse-translation">...</p>
+            </section>
+
+            <!-- র‍্যাঙ্কিং এর জন্য কার্ড (ভবিষ্যতের জন্য) -->
+            <section class="card rank-card">
+                <h3 class="card-title">🏆 লিডারবোর্ড</h3>
+                <p>র‍্যাঙ্কিং ফিচারটি খুব শীঘ্রই আসছে।</p>
+            </section>
+        </main>
+    </div>
+
+    <!-- নিচের ন্যাভিগেশন বার -->
     <nav class="bottom-nav">
         <a href="index.html" class="nav-item active">
-             <!-- হোম আইকন SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             <span>হোম</span>
         </a>
         <a href="#" class="nav-item">
-            <!-- সালাত আইকন SVG -->
              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
             <span>সালাত</span>
         </a>
-        <a href="settings.html" class="nav-item"> <!-- লিঙ্কটি এখানে পরিবর্তন করা হয়েছে -->
-            <!-- সেটিংস আইকন SVG -->
+        <a href="settings.html" class="nav-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
             <span>সেটিংস</span>
         </a>
     </nav>
 
+    <!-- আমাদের কার্যকারিতার ফাইল (JavaScript) -->
     <script src="app.js"></script>
 </body>
 </html>
