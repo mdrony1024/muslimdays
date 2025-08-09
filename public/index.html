@@ -97,7 +97,7 @@
         </div>
     </div>
     
-    <!-- সমস্ত কার্যকারিতা (JavaScript) -->
+    <!-- সমস্ত কার্যকারিতা (JavaScript - আপডেটেড) -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const tg = window.Telegram.WebApp;
@@ -127,11 +127,13 @@
                     const city = geoData.address.city || geoData.address.town || geoData.address.village || 'আপনার এলাকা';
                     locationTitle.textContent = `🕋 আজকের নামাজের সময়সূচী (${city})`;
                     
-                    const response = await fetch(`https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}`);
+                    // --- চূড়ান্ত সমাধান: বাংলাদেশের জন্য সঠিক মেথড এবং স্কুল ---
+                    const response = await fetch(`https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}&method=5&school=1`);
+                    
                     const data = await response.json();
                     const timings = data.data.timings;
-                    const prayerOrder = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
-                    const prayerMapping = { 'Fajr': 'ফজর', 'Dhuhr': 'যোহর', 'Asr': 'আসর', 'Maghrib': 'মাগরিব', 'Isha': 'ইশা' };
+                    const prayerOrder = ['Fajr', 'Dhuhr', 'Asr', 'Magrib', 'Isha'];
+                    const prayerMapping = { 'Fajr': 'ফজর', 'Dhuhr': 'যোহর', 'Asr': 'আসর', 'Magrib': 'মাগরিব', 'Isha': 'ইশা' };
                     prayerList.innerHTML = '';
                     prayerOrder.forEach(key => {
                         const li = document.createElement('li');
