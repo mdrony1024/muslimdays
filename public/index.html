@@ -1,101 +1,25 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>দিন মুসলিম</title>
-    <!-- টেলিগ্রাম ওয়েব অ্যাপের জন্য SDK -->
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        :root { --tg-theme-bg-color: #f0f2f5; --tg-theme-text-color: #212529; --tg-theme-button-color: #007bff; --tg-theme-button-text-color: #ffffff; --card-bg-color: #ffffff; --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
-        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: var(--tg-theme-bg-color); color: var(--tg-theme-text-color); line-height: 1.5; }
-        .app-container { padding: 20px; }
-        .header { text-align: center; margin-bottom: 25px; }
-        .header h1 { font-size: 28px; margin: 0; color: #333; }
-        .header p { font-size: 16px; color: #6c757d; margin-top: 5px; }
-        .card { background-color: var(--card-bg-color); border-radius: 15px; padding: 20px; margin-bottom: 20px; box-shadow: var(--card-shadow); }
-        .card-title { font-size: 18px; font-weight: 600; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .prayer-times ul { list-style: none; padding: 0; margin: 0; }
-        .prayer-times li { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f1f1f1; }
-        .prayer-times li:last-child { border-bottom: none; }
-        .prayer-times .prayer-name { font-weight: 500; }
-        .prayer-times .prayer-time { font-weight: 600; color: var(--tg-theme-button-color); }
-        .daily-verse-card .verse-arabic { font-family: 'Amiri', serif; font-size: 22px; text-align: right; margin-bottom: 10px; }
-        .daily-verse-card .verse-translation { font-size: 15px; font-style: italic; color: #555; }
-        .footer { text-align: center; padding: 20px; font-size: 14px; color: #888; }
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&display=swap" rel="stylesheet">
-</head>
-<body>
+<!-- index.html -->
+<!-- ... (ফাইলের উপরের সব অংশ একই থাকবে) ... -->
 
-    <div class="app-container">
-        <div class="header">
-            <h1 id="greeting">আসসালামু আলাইকুম</h1>
-            <p id="date-today">আজকের তারিখ</p>
-        </div>
+    <!-- Bottom Navigation Bar (আপডেটেড) -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active">
+             <!-- হোম আইকন SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <span>হোম</span>
+        </a>
+        <a href="#" class="nav-item">
+            <!-- সালাত আইকন SVG -->
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>সালাত</span>
+        </a>
+        <a href="settings.html" class="nav-item"> <!-- লিঙ্কটি এখানে পরিবর্তন করা হয়েছে -->
+            <!-- সেটিংস আইকন SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span>সেটিংস</span>
+        </a>
+    </nav>
 
-        <div class="card prayer-times">
-            <h2 class="card-title">🕋 আজকের নামাজের সময়সূচী (ঢাকা)</h2>
-            <ul id="prayer-list">
-                <li><span class="prayer-name">ফজর</span> <span class="prayer-time">...</span></li>
-                <li><span class="prayer-name">যোহর</span> <span class="prayer-time">...</span></li>
-                <li><span class="prayer-name">আসর</span> <span class="prayer-time">...</span></li>
-                <li><span class="prayer-name">মাগরিব</span> <span class="prayer-time">...</span></li>
-                <li><span class="prayer-name">ইশা</span> <span class="prayer-time">...</span></li>
-            </ul>
-        </div>
-
-        <div class="card daily-verse-card">
-            <h2 class="card-title">📖 আজকের আয়াত</h2>
-            <p class="verse-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</p>
-            <p class="verse-translation">"পরম করুণাময় অসীম দয়ালু আল্লাহর নামে শুরু করছি।"</p>
-        </div>
-    </div>
-
-    <div class="footer">
-        দিন মুসলিম বট
-    </div>
-
-    <script>
-        // টেলিগ্রাম অবজেক্ট ইনিশিয়ালাইজ করুন
-        const tg = window.Telegram.WebApp;
-        tg.expand(); // অ্যাপটিকে পূর্ণ স্ক্রিনে দেখান
-
-        // ব্যবহারকারীর নাম দিয়ে সম্ভাষণ জানান (যদি পাওয়া যায়)
-        if (tg.initDataUnsafe?.user?.first_name) {
-            document.getElementById('greeting').textContent = `আসসালামু আলাইকুম, ${tg.initDataUnsafe.user.first_name}!`;
-        }
-
-        // আজকের তারিখ দেখান
-        const today = new Date();
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('date-today').textContent = today.toLocaleDateString('bn-BD', options);
-
-        // নামাজের সময় লোড করুন
-        async function fetchPrayerTimes() {
-            try {
-                const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Dhaka&country=Bangladesh&method=1');
-                const data = await response.json();
-                const timings = data.data.timings;
-                
-                const prayerMapping = { 'Fajr': 'ফজর', 'Dhuhr': 'যোহর', 'Asr': 'আসর', 'Maghrib': 'মাগরিব', 'Isha': 'ইশা' };
-                const prayerList = document.getElementById('prayer-list');
-                prayerList.innerHTML = ''; // আগের লিস্ট খালি করুন
-
-                for (const [key, value] of Object.entries(prayerMapping)) {
-                    const li = document.createElement('li');
-                    li.innerHTML = `<span class="prayer-name">${value}</span> <span class="prayer-time">${timings[key]}</span>`;
-                    prayerList.appendChild(li);
-                }
-            } catch (error) {
-                console.error('Error fetching prayer times:', error);
-                document.getElementById('prayer-list').innerHTML = '<li>নামাজের সময় লোড করা যায়নি।</li>';
-            }
-        }
-
-        fetchPrayerTimes();
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>
