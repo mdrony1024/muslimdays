@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "public/**/*", "use": "@vercel/static" },
+    { "src": "index.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/save-fcm-token", "dest": "index.js" },
+    { "src": "/(.*)", "dest": "index.js" }
+  ]
+}
