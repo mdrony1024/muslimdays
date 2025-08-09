@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>সেটিংস - দিন মুসলিম</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="greeting">
+                <h2>সেটিংস</h2>
+                <p>আপনার অ্যাপটি সাজিয়ে নিন</p>
+            </div>
+        </header>
+
+        <main>
+            <!-- General Settings -->
+            <section class="card">
+                <h3 class="card-title">সাধারণ</h3>
+                <ul class="settings-list">
+                    <li class="list-item">
+                        <div class="item-content">
+                            <span class="icon">🌐</span>
+                            <span class="title">ভাষা</span>
+                        </div>
+                        <span class="arrow">&gt;</span>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-content">
+                            <span class="icon">🕋</span>
+                            <span class="title">নামাজের সময় পদ্ধতি</span>
+                        </div>
+                        <span class="arrow">&gt;</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Theme Settings -->
+            <section class="card">
+                <h3 class="card-title">থিম</h3>
+                <ul class="settings-list">
+                    <li class="list-item">
+                        <div class="item-content">
+                            <span class="icon">🌙</span>
+                            <span class="title">ডার্ক মোড</span>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="dark-mode-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-content">
+                            <span class="icon">🎨</span>
+                            <span class="title">প্রাইমারি রঙ</span>
+                        </div>
+                        <span class="arrow">&gt;</span>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <!-- হোম আইকন SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <span>হোম</span>
+        </a>
+        <a href="#" class="nav-item">
+            <!-- সালাত আইকন SVG -->
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>সালাত</span>
+        </a>
+        <a href="settings.html" class="nav-item active">
+            <!-- সেটিংস আইকন SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span>সেটিংস</span>
+        </a>
+    </nav>
+    <script>
+        const tg = window.Telegram.WebApp;
+        
+        // ডার্ক মোড টগল
+        const toggle = document.getElementById('dark-mode-toggle');
+        if (tg.colorScheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            toggle.checked = true;
+        }
+
+        toggle.addEventListener('change', () => {
+            if (toggle.checked) {
+                document.body.classList.add('dark-mode');
+                // ভবিষ্যতে ব্যবহারকারীর পছন্দ সেভ করার জন্য কোড লেখা যাবে
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        });
+    </script>
+</body>
+</html>
